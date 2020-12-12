@@ -1,14 +1,14 @@
-const express = require("express")
-require("./db/mongoose")
-const User = require("./models/user")
-const Task = require("./models/task")
+const express = require('express')
+require('./db/mongoose')
+const User = require('./models/user')
+const Task = require('./models/task')
 
 const app = express()
 const port = process.env.PORT || 3000
 
 app.use(express.json())
 
-app.post("/users", (req, res) => {
+app.post('/users', (req, res) => {
   const user = new User(req.body)
 
   user
@@ -21,7 +21,7 @@ app.post("/users", (req, res) => {
     })
 })
 
-app.get("/users", (req, res) => {
+app.get('/users', (req, res) => {
   User.find({})
     .then((users) => {
       res.send(users)
@@ -31,7 +31,7 @@ app.get("/users", (req, res) => {
     })
 })
 
-app.get("/users/:id", (req, res) => {
+app.get('/users/:id', (req, res) => {
   const _id = req.params.id
   User.findById(_id)
     .then((user) => {
@@ -46,7 +46,7 @@ app.get("/users/:id", (req, res) => {
     })
 })
 
-app.post("/tasks", (req, res) => {
+app.post('/tasks', (req, res) => {
   const task = new Task(req.body)
 
   task
@@ -59,7 +59,7 @@ app.post("/tasks", (req, res) => {
     })
 })
 
-app.get("/tasks", (req, res) => {
+app.get('/tasks', (req, res) => {
   Task.find({})
     .then((tasks) => {
       res.send(tasks)
@@ -69,7 +69,7 @@ app.get("/tasks", (req, res) => {
     })
 })
 
-app.get("/tasks/:id", (req, res) => {
+app.get('/tasks/:id', (req, res) => {
   const _id = req.params.id
   Task.findById(_id)
     .then((task) => {
@@ -85,5 +85,5 @@ app.get("/tasks/:id", (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log("Server is up on port: ", port)
+  console.log('Server is up on port: ', port)
 })

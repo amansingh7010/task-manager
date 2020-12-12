@@ -1,6 +1,6 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
-const Task = mongoose.model("Tasks", {
+const Task = mongoose.model('Tasks', {
   description: {
     type: String,
     required: true,

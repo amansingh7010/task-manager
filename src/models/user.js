@@ -1,7 +1,7 @@
-const mongoose = require("mongoose")
-const validator = require("validator")
+const mongoose = require('mongoose')
+const validator = require('validator')
 
-const User = mongoose.model("User", {
+const User = mongoose.model('User', {
   name: {
     type: String,
     required: true,
@@ -13,8 +13,8 @@ const User = mongoose.model("User", {
     trim: true,
     minLength: 6,
     validate(value) {
-      if (value.toLowerCase().includes("password")) {
-        throw new Error("Why so weak password? Try something else.")
+      if (value.toLowerCase().includes('password')) {
+        throw new Error('Why so weak password? Try something else.')
       }
     },
   },
@@ -25,7 +25,7 @@ const User = mongoose.model("User", {
     lowercase: true,
     validate(value) {
       if (!validator.isEmail(value)) {
-        throw new Error("Email is invalid")
+        throw new Error('Email is invalid')
       }
     },
   },
@@ -34,7 +34,7 @@ const User = mongoose.model("User", {
     default: 0,
     validate(value) {
       if (value < 0) {
-        throw new Error("Age must be a positive number")
+        throw new Error('Age must be a positive number')
       }
     },
   },
